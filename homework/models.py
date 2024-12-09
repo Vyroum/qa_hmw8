@@ -1,9 +1,8 @@
-from  dataclasses import dataclass
+from dataclasses import dataclass
 
 
 @dataclass
 class Product:
-
     name: str
     price: float
     description: str
@@ -27,7 +26,6 @@ class Product:
 
 
 class Cart:
-
     # Словарь продуктов и их количество в корзине
     products: dict[Product, int]
 
@@ -43,7 +41,6 @@ class Cart:
             self.products[product] += buy_count
         else:
             self.products[product] = buy_count
-
 
     def remove_product(self, product: Product, remove_count=None):
         if product in self.products:

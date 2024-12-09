@@ -1,6 +1,3 @@
-"""
-Протестируйте классы из модуля homework/models.py
-"""
 import pytest
 
 from homework.models import Product, Cart
@@ -10,19 +7,18 @@ from homework.models import Product, Cart
 def product():
     return Product("book", 100, "This is a book", 1000)
 
+
 @pytest.fixture
 def product_2():
     return Product("paperclip", 0.5, "This is a paperclip", 20)
+
 
 @pytest.fixture
 def cart(product):
     return Cart()
 
+
 class TestProducts:
-    """
-    Тестовый класс - это способ группировки ваших тестов по какой-то тематике
-    Например, текущий класс группирует тесты на класс Product
-    """
 
     def test_product_check_quantity(self, product):
         assert product.check_quantity(999) is True
