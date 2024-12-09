@@ -9,14 +9,9 @@ class Product:
     quantity: int
 
     def check_quantity(self, quantity) -> bool:
-
-        if self.quantity >= quantity:
-            return True
-        else:
-            return False
+        return self.quantity >= quantity
 
     def buy(self, quantity):
-
         if not self.check_quantity(quantity):
             raise ValueError(f"Недостаточно товара '{self.name}' на складе.")
         self.quantity -= quantity
@@ -62,5 +57,5 @@ class Cart:
             if quantity > product.quantity:
                 raise ValueError(f"Недостаточно {product.name} для покупки")
         for product, quantity in self.products.items():
-            product.quantity -= quantity
+            product.buy(quantity)
         self.clear()
