@@ -50,10 +50,12 @@ class TestCart:
         cart.remove_product(product, 1)
         assert cart.products[product] == 9
 
-    def test_delete_all_product_from_cart(self, cart, product):
+    def test_delete_all_product_from_cart(self, cart, product, product_2):
         cart.add_product(product, 10)
+        cart.add_product(product_2, buy_count=5)
         cart.remove_product(product)
-        assert product not in cart.products
+        cart.remove_product(product_2)
+        assert product and product_2 not in cart.products
 
     def test_clear_cart(self, cart, product):
         cart.add_product(product, 10)
